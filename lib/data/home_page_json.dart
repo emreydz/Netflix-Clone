@@ -1,5 +1,14 @@
 const List mylist = [
-  {"img": "assets/images/img_1.png"},
+  {
+    "img": "assets/images/img_1.png",
+    "title": "Lucy",
+    "description":
+        "When a young American in Taiwan becomes an unwilling drug mule, the high-tech narcotics get released into her system and activate superhuman powers.",
+    "type": "Sci-Fi Movies",
+    "date": "2014",
+    "age": "18+",
+    "time": "1h 29m"
+  },
   {"img": "assets/images/img_2.png"},
   {"img": "assets/images/img_3.png"},
   {"img": "assets/images/img_4.png"},

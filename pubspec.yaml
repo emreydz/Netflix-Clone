@@ -39,6 +39,8 @@ dependencies:
   lottie: ^1.4.3
   smooth_page_indicator: ^1.0.0+2
   antdesign_icons: ^0.0.3
+  chewie: ^0.10.0
+  video_player: ^1.0.1
 
 dev_dependencies:
   flutter_test:

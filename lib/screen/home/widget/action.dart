@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/screen/home/view/home_detail.dart';
 
 class HomeactionFilms extends StatelessWidget {
   final String label;
@@ -39,8 +40,8 @@ class HomeactionFilms extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: Container(
-                        height: 175,
-                        width: 210,
+                        height: 190,
+                        width: 150,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
@@ -71,54 +72,79 @@ class HomeactionFilms extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return Container(
-          height: 250,
+          height: 290,
           color: Colors.black.withOpacity(0.9),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: ListTile(
-                  leading: SizedBox(
-                    height: 150,
-                    width: 100,
-                    child: Image.asset(
-                      filmList[index]["img"],
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  trailing: CircleAvatar(
-                    radius: 18,
-                    backgroundColor: Colors.black,
-                    child: Icon(
-                      Icons.close,
-                      color: Colors.white,
-                    ),
-                  ),
-                  title: Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          filmList[index]["title"],
-                          style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
+              GestureDetector(
+                onTap: (() {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: ((context) => HomeDetail())));
+                }),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 125,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          child: Image.asset(
+                            filmList[index]["img"],
+                            fit: BoxFit.fill,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  subtitle: Text(
-                    filmList[index]["description"],
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10, left: 10),
+                          child: Container(
+                            width: 235,
+                            child: Column(
+                              children: [
+                                Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(
+                                    filmList[index]["title"],
+                                    style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                Text(
+                                  filmList[index]["description"],
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          child: Align(
+                            alignment: Alignment.topRight,
+                            child: CircleAvatar(
+                                radius: 18,
+                                backgroundColor: Colors.black,
+                                child: IconButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  icon: Center(
+                                    child: Icon(
+                                      Icons.close,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                )),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -208,12 +234,19 @@ class HomeactionFilms extends StatelessWidget {
                 color: Colors.grey,
                 height: 2,
               ),
-              Center(
-                child: const ListTile(
-                  leading: Icon(Icons.info_outline, color: Colors.white),
-                  title: Text("More...", style: TextStyle(color: Colors.white)),
-                  trailing:
-                      Icon(Icons.chevron_right_outlined, color: Colors.white),
+              GestureDetector(
+                onTap: (() {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: ((context) => HomeDetail())));
+                }),
+                child: Center(
+                  child: const ListTile(
+                    leading: Icon(Icons.info_outline, color: Colors.white),
+                    title:
+                        Text("More...", style: TextStyle(color: Colors.white)),
+                    trailing:
+                        Icon(Icons.chevron_right_outlined, color: Colors.white),
+                  ),
                 ),
               )
             ],
