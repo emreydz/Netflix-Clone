@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix_clone/data/home_page_json.dart';
 import 'package:netflix_clone/data/json/category.dart';
 import 'package:netflix_clone/screen/bottom_bar.dart';
+import 'package:netflix_clone/screen/home/view/bannenrdetail.dart';
 
 import 'package:netflix_clone/screen/home/view/home_detail.dart';
 import 'package:netflix_clone/screen/home/widget/action.dart';
@@ -193,12 +194,17 @@ class _HomeState extends State<Home> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
-                                    GestureDetector(
-                                      onTap: (() {}),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Container(
-                                          height: 125,
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        height: 125,
+                                        child: GestureDetector(
+                                          onTap: (() {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: ((context) =>
+                                                        BannerVideo())));
+                                          }),
                                           child: Row(
                                             children: [
                                               SizedBox(
@@ -366,7 +372,7 @@ class _HomeState extends State<Home> {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(
                                                 builder: ((context) =>
-                                                    HomeDetail())));
+                                                    BannerVideo())));
                                       }),
                                       child: Center(
                                         child: const ListTile(

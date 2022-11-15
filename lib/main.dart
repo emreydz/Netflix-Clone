@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/screen/home/view/bannenrdetail.dart';
 import 'package:netflix_clone/screen/home/view/home_screen.dart';
 import 'package:netflix_clone/screen/splash_screen.dart';
 
@@ -18,6 +19,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.black,
         ),
-        home: ScreenSplash());
+        home: BannerVideo());
   }
 }
