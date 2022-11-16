@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/screen/bottom_bar.dart';
+import 'package:netflix_clone/screen/home/view/tabbar_screen/B%C3%B6l%C3%BCmler.dart';
+import 'package:netflix_clone/screen/home/view/tabbar_screen/benzerler.dart';
+import 'package:netflix_clone/screen/home/view/tabbar_screen/fragmanlar.dart';
+
 import 'package:video_player/video_player.dart';
 
 class BannerVideo extends StatefulWidget {
@@ -9,7 +13,8 @@ class BannerVideo extends StatefulWidget {
   State<BannerVideo> createState() => _BannerVideoState();
 }
 
-class _BannerVideoState extends State<BannerVideo> {
+class _BannerVideoState extends State<BannerVideo>
+    with TickerProviderStateMixin {
   late final VideoPlayerController _controller;
   bool iconvisible = false;
   bool isplayingbar = true;
@@ -50,20 +55,21 @@ class _BannerVideoState extends State<BannerVideo> {
 
   @override
   Widget build(BuildContext context) {
+    TabController _tabController = TabController(length: 3, vsync: this);
     return Scaffold(
-      appBar: AppBar(
-        leading: Icon(
-          Icons.arrow_back_rounded,
+        appBar: AppBar(
+          leading: Icon(
+            Icons.arrow_back_rounded,
+          ),
+          backgroundColor: Colors.black,
+          elevation: 0,
+          actions: [
+            IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+            Icon(Icons.person)
+          ],
         ),
-        backgroundColor: Colors.black,
-        elevation: 0,
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-          Icon(Icons.person)
-        ],
-      ),
-      body: Column(
-        children: [
+        body: SingleChildScrollView(
+            child: Column(children: [
           Container(
               child: _controller.value.isInitialized
                   ? Column(
@@ -78,7 +84,7 @@ class _BannerVideoState extends State<BannerVideo> {
                                   });
                                 },
                                 child: SizedBox(
-                                    height: 300,
+                                    height: 275,
                                     child: VideoPlayer(_controller))),
                             Positioned(
                               child: Container(
@@ -349,8 +355,28 @@ class _BannerVideoState extends State<BannerVideo> {
             height: 10,
             color: Colors.white.withOpacity(0.5),
           ),
-        ],
-      ),
-    );
+          Container(
+            child: TabBar(controller: _tabController, tabs: [
+              Tab(
+                text: "Sections",
+              ),
+              Tab(
+                text: "Trailers",
+              ),
+              Tab(
+                text: "Similar",
+              )
+            ]),
+          ),
+          Container(
+            width: double.maxFinite,
+            height: 1200,
+            child: TabBarView(controller: _tabController, children: [
+              sections(),
+              trailers(),
+              similer(),
+            ]),
+          )
+        ])));
   }
 }
