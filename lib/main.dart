@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/screen/home/view/bannenrdetail.dart';
-import 'package:netflix_clone/screen/home/view/home_screen.dart';
-import 'package:netflix_clone/screen/splash_screen.dart';
+import 'package:netflix_clone/features/home/view/bannenrdetail.dart';
+import 'package:netflix_clone/features/home/view/home_screen.dart';
+import 'package:netflix_clone/features/onStartPage/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());

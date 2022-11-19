@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/screen/onStartPage/widget/screen_bottom_section.dart';
+import 'package:netflix_clone/features/onStartPage/widget/screen_bottom_section.dart';
 
 import 'screen_appBar_top.dart';
 

@@ -310,5 +310,34 @@ const List comingSoonJson = [
     "type": "Violence, Sex, Nudity, Language, Substances",
     "date": "2021 June",
     "duration": true
-  }
+  },
+];
+const List everyonewatch = [
+  {
+    "img": "assets/images/under.jpg",
+    "title_img": "assets/images/title_img_3.png",
+    "title": "6 Underground",
+    "description":
+        "After faking his death, a tech billionaire recruits a team of international operatives for a bold and bloody mission to take down a brutal dictator.",
+    "type": "Gritty - Dark - Action Thriller - Action & Adventure - Drama",
+    "duration": true
+  },
+  {
+    "img": "assets/images/savuge.jpg",
+    "title_img": "assets/images/title_img_4.png",
+    "title": "Sausage Party",
+    "description":
+        "After making a gruesome discovery about life beyond the supermarket, an affable sausage strives to save his fellow foods in this raunchy comedy.",
+    "type": "Comedies - Action Thriller - Action & Adventure ",
+    "duration": false
+  },
+  {
+    "img": "assets/images/black.jpg",
+    "title_img": "assets/images/title_img_5.png",
+    "title": "Black Crab",
+    "description":
+        "To end an apocalyptic war and save her daughter, a reluctant soldier embarks on a desperate mission to cross a frozen sea carrying a top-secret cargo.",
+    "type": "Violence, Sex, Movies Based on Books, Language, Substances",
+    "duration": true
+  },
 ];

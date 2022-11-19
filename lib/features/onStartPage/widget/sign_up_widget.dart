@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/screen/bottom_bar.dart';
-import 'package:netflix_clone/screen/home/view/home_screen.dart';
+import 'package:netflix_clone/features/bottom/view/bottom_navigation.dart';
+import 'package:netflix_clone/features/home/view/home_screen.dart';
 
 class SignUpWidget extends StatelessWidget {
   const SignUpWidget({

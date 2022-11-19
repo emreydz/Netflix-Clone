@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/data/json/category.dart';
+import 'package:netflix_clone/core/data/json/category.dart';
 
 class similer extends StatefulWidget {
   similer({Key? key}) : super(key: key);

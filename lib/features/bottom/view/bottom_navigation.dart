@@ -1,9 +1,11 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/screen/Coming_Soon/ComingSoon.dart';
-import 'package:netflix_clone/screen/Downloads/downloads.dart';
-import 'package:netflix_clone/screen/Search/search_screen.dart';
-import 'package:netflix_clone/screen/home/view/home_screen.dart';
+import 'package:netflix_clone/features/bottom/model/bottom_navigater.dart';
+import '../../../core/constants/bottom/bottom_constant.dart';
+import '../../../core/init/icon/app_icon.dart';
+
+AppIcon get _icons => AppIcon.init();
+TabBarConstants get _item => TabBarConstants.init();
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -13,18 +15,13 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  List items = [
-    {"icon": AntIcons.homeOutlined, "text": "Home"},
-    {"icon": AntIcons.playCircleOutlined, "text": "Coming Soon"},
-    {"icon": AntIcons.searchOutlined, "text": "Search"},
-    {"icon": AntIcons.downOutlined, "text": "Downloads"},
+  List<bottomnavigation> btmnavigtn = [
+    bottomnavigation(icon: _icons.items[0], title: _item.home),
+    bottomnavigation(icon: _icons.items[1], title: _item.comingSoon),
+    bottomnavigation(icon: _icons.items[2], title: _item.search),
+    bottomnavigation(icon: _icons.items[3], title: _item.downloads),
   ];
-  List<Widget> screens = <Widget>[
-    Home(),
-    ComingSoonPage(),
-    SearchPage(),
-    DownloadsPage(),
-  ];
+
   int selectedIndex = 0;
   void onChange(int value) {
     setState(() {
@@ -35,7 +32,7 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[selectedIndex],
+      body: _item.screens[selectedIndex],
       backgroundColor: Colors.black,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -56,27 +53,27 @@ class _BottomBarState extends State<BottomBar> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              items[0]["icon"],
+              btmnavigtn[0].icon,
             ),
-            label: items[0]["text"],
+            label: btmnavigtn[0].title,
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              items[1]["icon"],
+              btmnavigtn[1].icon,
             ),
-            label: items[1]["text"],
+            label: btmnavigtn[1].title,
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              items[2]["icon"],
+              btmnavigtn[2].icon,
             ),
-            label: items[2]["text"],
+            label: btmnavigtn[2].title,
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              items[3]["icon"],
+              btmnavigtn[3].icon,
             ),
-            label: items[3]["text"],
+            label: btmnavigtn[3].title,
           )
         ],
         onTap: (value) {

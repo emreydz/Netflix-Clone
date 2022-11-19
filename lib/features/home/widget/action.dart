@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/screen/home/view/home_detail.dart';
+import 'package:netflix_clone/features/home/view/home_detail.dart';
 
 class HomeactionFilms extends StatelessWidget {
   final String label;

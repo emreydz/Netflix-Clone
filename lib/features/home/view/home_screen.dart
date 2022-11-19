@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/data/home_page_json.dart';
-import 'package:netflix_clone/data/json/category.dart';
-import 'package:netflix_clone/screen/bottom_bar.dart';
-import 'package:netflix_clone/screen/home/view/bannenrdetail.dart';
+import 'package:netflix_clone/core/data/home_page_json.dart';
+import 'package:netflix_clone/core/data/json/category.dart';
+import 'package:netflix_clone/features/bottom/view/bottom_navigation.dart';
+import 'package:netflix_clone/features/home/view/bannenrdetail.dart';
 
-import 'package:netflix_clone/screen/home/view/home_detail.dart';
-import 'package:netflix_clone/screen/home/widget/action.dart';
-import 'package:netflix_clone/screen/home/widget/my_list.dart';
+import 'package:netflix_clone/features/home/view/home_detail.dart';
+import 'package:netflix_clone/features/home/widget/action.dart';
+import 'package:netflix_clone/features/home/widget/my_list.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);

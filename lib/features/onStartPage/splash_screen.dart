@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:netflix_clone/screen/home/view/home_screen.dart';
-import 'package:netflix_clone/screen/onStartPage/scrren_onboarding.dart';
+import 'package:netflix_clone/features/home/view/home_screen.dart';
+import 'package:netflix_clone/features/onStartPage/scrren_onboarding.dart';
 
 class ScreenSplash extends StatefulWidget {
   const ScreenSplash({Key? key}) : super(key: key);

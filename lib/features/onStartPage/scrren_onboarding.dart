@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/screen/onStartPage/widget/screen_second.dart';
-import 'package:netflix_clone/screen/onStartPage/widget/sign_up_widget.dart';
+import 'package:netflix_clone/features/onStartPage/widget/screen_second.dart';
+import 'package:netflix_clone/features/onStartPage/widget/sign_up_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ScreenOnStart extends StatefulWidget {
