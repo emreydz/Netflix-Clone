@@ -19,6 +19,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.black,
         ),
-        home: BannerVideo());
+        home: ScreenSplash());
   }
 }

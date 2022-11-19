@@ -90,6 +90,26 @@ const List action = [
     "time": "1h 47m"
   },
   {
+    "img": "assets/images/holidate.jpg",
+    "title": "Holidate",
+    "description":
+        "Fed up with being single on holidays, two strangers agree to be each other's platonic plus-ones all year long, only to catch real feelings along the way.",
+    "type": "Romantic Comedies",
+    "date": "2020",
+    "age": "16+",
+    "time": "1h 44m"
+  },
+  {
+    "img": "assets/images/97.jpg",
+    "title": "No Strings Attached",
+    "description":
+        "Emma and Adam strike up a purely physical relationship — no lying, no jealousy, no intimacy. But unexpected feelings soon complicate their arrangement.",
+    "type": "Romantic Comedies",
+    "date": "2011",
+    "age": "18+",
+    "time": "1h 49m"
+  },
+  {
     "img": "assets/images/takeover1.jpg",
     "title": "Take Over",
     "description":
@@ -258,4 +278,37 @@ List teenMovie = [
     "age": "18+",
     "time": "1h 49m"
   },
+];
+
+const List comingSoonJson = [
+  {
+    "img": "assets/images/banner.webp",
+    "title_img": "assets/images/title_img.webp",
+    "title": "Sentinelle",
+    "description":
+        "Considered a fool and unfit to lead, Nobunaga rises to power as the head of the Oda clan, spurring dissent among those in his family vying for control.",
+    "type": "Gritty - Dark - Action Thriller - Action & Adventure - Drama",
+    "date": "Coming Friday",
+    "duration": true
+  },
+  {
+    "img": "assets/images/banner_1.webp",
+    "title_img": "assets/images/title_img_1.webp",
+    "title": "Vincenzo",
+    "description":
+        "During a visit to his motherland, a Korean-Italian mafia lawyer gives an unrivaled conglomerate a taste of its own medicine with a side of justice.",
+    "type": "Gritty - Dark - Action Thriller - Action & Adventure - Drama",
+    "date": "New Episode Coming Saturday",
+    "duration": false
+  },
+  {
+    "img": "assets/images/banner_2.webp",
+    "title_img": "assets/images/title_img_2.webp",
+    "title": "Peaky Blinders",
+    "description":
+        "A notorious gang in 1919 Birmingham, England, is led by the fierce Tommy Shelby, a crime boss set on moving up in the world no matter the cost.",
+    "type": "Violence, Sex, Nudity, Language, Substances",
+    "date": "2021 June",
+    "duration": true
+  }
 ];

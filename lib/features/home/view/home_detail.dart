@@ -1,20 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/screen/bottom_bar.dart';
 import 'package:netflix_clone/screen/home/view/tabbar_screen/B%C3%B6l%C3%BCmler.dart';
 import 'package:netflix_clone/screen/home/view/tabbar_screen/benzerler.dart';
 import 'package:netflix_clone/screen/home/view/tabbar_screen/fragmanlar.dart';
-
 import 'package:video_player/video_player.dart';
 
-class BannerVideo extends StatefulWidget {
-  BannerVideo({Key? key}) : super(key: key);
+class HomeDetail extends StatefulWidget {
+  final String name;
+  final String img;
+  final String describ;
+  final String date;
+  final String min;
+  final String type;
+  final String age;
+  HomeDetail(
+      {Key? key,
+      required this.name,
+      required this.img,
+      required this.describ,
+      required this.date,
+      required this.min,
+      required this.type,
+      required this.age})
+      : super(key: key);
 
   @override
-  State<BannerVideo> createState() => _BannerVideoState();
+  State<HomeDetail> createState() => _HomeDetailState();
 }
 
-class _BannerVideoState extends State<BannerVideo>
-    with TickerProviderStateMixin {
+class _HomeDetailState extends State<HomeDetail> with TickerProviderStateMixin {
   late final VideoPlayerController _controller;
   bool iconvisible = false;
   bool isplayingbar = true;
@@ -23,7 +36,7 @@ class _BannerVideoState extends State<BannerVideo>
     if (!init) {
       _controller.pause();
     }
-    _controller = VideoPlayerController.asset("assets/videos/video_1.mp4")
+    _controller = VideoPlayerController.asset("assets/videos/video_2.mp4")
       ..addListener(() {
         setState(() {});
       })
@@ -182,7 +195,7 @@ class _BannerVideoState extends State<BannerVideo>
             child: Align(
               alignment: Alignment.topLeft,
               child: Text(
-                "Age of Samurai: Battle for Japan",
+                widget.name,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -195,7 +208,7 @@ class _BannerVideoState extends State<BannerVideo>
             child: Row(
               children: [
                 Text(
-                  "2021",
+                  widget.date,
                   style: TextStyle(
                       color: Colors.white.withOpacity(0.4), fontSize: 16),
                 ),
@@ -203,7 +216,7 @@ class _BannerVideoState extends State<BannerVideo>
                   width: 10,
                 ),
                 Text(
-                  "18+",
+                  widget.age,
                   style: TextStyle(
                       color: Colors.white.withOpacity(0.4), fontSize: 16),
                 ),
@@ -273,14 +286,14 @@ class _BannerVideoState extends State<BannerVideo>
             padding: const EdgeInsets.all(8.0),
             child: Container(
                 child: Text(
-              "Explore the turbulent history and power struggles of war-torn 16th-century feudal Japan with action-packed reenactments and expert commentary. ",
+              widget.describ,
               style: TextStyle(fontSize: 16, color: Colors.white),
             )),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              "Actors: Masayoshi Haneda,Masami Kosaka,Hideaki Ito",
+              "Type: ${widget.type}",
               style:
                   TextStyle(color: Colors.white.withOpacity(0.5), fontSize: 16),
             ),
@@ -373,7 +386,10 @@ class _BannerVideoState extends State<BannerVideo>
             height: 1200,
             child: TabBarView(controller: _tabController, children: [
               sections(),
-              trailers(),
+              trailers(
+                img: widget.img,
+                name: widget.name,
+              ),
               similer(),
             ]),
           )

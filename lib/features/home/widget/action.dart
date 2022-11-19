@@ -79,8 +79,16 @@ class HomeactionFilms extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: (() {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: ((context) => HomeDetail())));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: ((context) => HomeDetail(
+                            name: filmList[index]["title"],
+                            date: filmList[index]["date"],
+                            age: filmList[index]["age"],
+                            describ: filmList[index]["description"],
+                            min: filmList[index]["time"],
+                            img: filmList[index]["img"],
+                            type: filmList[index]["type"],
+                          ))));
                 }),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -236,8 +244,16 @@ class HomeactionFilms extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: (() {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: ((context) => HomeDetail())));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: ((context) => HomeDetail(
+                            name: filmList[index]["title"],
+                            date: filmList[index]["date"],
+                            age: filmList[index]["age"],
+                            describ: filmList[index]["description"],
+                            min: filmList[index]["time"],
+                            img: filmList[index]["img"],
+                            type: filmList[index]["type"],
+                          ))));
                 }),
                 child: Center(
                   child: const ListTile(
