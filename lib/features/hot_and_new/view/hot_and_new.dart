@@ -14,7 +14,7 @@ class _HotAndNewState extends State<HotAndNew> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: DefaultTabController(
-        length: 3,
+        length: 2,
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.black,
