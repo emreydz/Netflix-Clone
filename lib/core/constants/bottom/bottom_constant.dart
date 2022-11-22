@@ -1,5 +1,6 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/features/fast_laug/view/fast_laug.dart';
 
 import '../../../features/hot_and_new/view/hot_and_new.dart';
 import '../../../features/hot_and_new/view/tab/cominsoon.dart';
@@ -24,12 +25,14 @@ class TabBarConstants {
   List<Widget> screens = <Widget>[
     Home(),
     HotAndNew(),
+    fast_laug(),
     SearchPage(),
     DownloadsPage(),
   ];
 
   final String home = "Home";
   final String comingSoon = "Coming Soon";
+  final String FastLaug = "Fast Laug";
   final String search = "Search";
   final String downloads = "Downloads";
 }

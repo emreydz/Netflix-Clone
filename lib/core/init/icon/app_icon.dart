@@ -20,6 +20,7 @@ class AppIcon {
     // AntDesign.download,
     Icons.home,
     Icons.play_circle_outline_outlined,
+    Icons.my_library_books_rounded,
     Icons.search,
     Icons.download
   ];

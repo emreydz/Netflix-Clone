@@ -18,8 +18,9 @@ class _BottomBarState extends State<BottomBar> {
   List<bottomnavigation> btmnavigtn = [
     bottomnavigation(icon: _icons.items[0], title: _item.home),
     bottomnavigation(icon: _icons.items[1], title: _item.comingSoon),
-    bottomnavigation(icon: _icons.items[2], title: _item.search),
-    bottomnavigation(icon: _icons.items[3], title: _item.downloads),
+    bottomnavigation(icon: _icons.items[2], title: _item.FastLaug),
+    bottomnavigation(icon: _icons.items[3], title: _item.search),
+    bottomnavigation(icon: _icons.items[4], title: _item.downloads),
   ];
 
   int selectedIndex = 0;
@@ -74,6 +75,12 @@ class _BottomBarState extends State<BottomBar> {
               btmnavigtn[3].icon,
             ),
             label: btmnavigtn[3].title,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              btmnavigtn[4].icon,
+            ),
+            label: btmnavigtn[4].title,
           )
         ],
         onTap: (value) {

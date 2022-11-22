@@ -55,14 +55,12 @@ class _HomeDetailState extends State<HomeDetail> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     playvideo(init: true);
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
