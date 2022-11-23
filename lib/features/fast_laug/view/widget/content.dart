@@ -13,6 +13,8 @@ class ContentScreen extends StatefulWidget {
 }
 
 class _ContentScreenState extends State<ContentScreen> {
+  bool iconvisible = false;
+  bool isplayingbar = true;
   late VideoPlayerController _videoPlayerController;
   ChewieController? _chewieController;
   @override
@@ -50,20 +52,105 @@ class _ContentScreenState extends State<ContentScreen> {
       children: [
         _chewieController != null &&
                 _chewieController!.videoPlayerController.value.isInitialized
-            ? GestureDetector(
-                child: Chewie(
-                  controller: _chewieController!,
+            ? _videoplayer(
+                videoPlayerController: _videoPlayerController,
+                chewieController: _chewieController)
+            : _circularprogress(),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(8, 8, 8, 30),
+          child: Align(
+            alignment: Alignment.bottomLeft,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [_volume(), optionwidget()],
                 ),
-              )
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularProgressIndicator(
-                    color: Colors.white,
-                  ),
-                ],
-              ),
-        OptionsScreen()
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  Container _volume() {
+    return Container(
+      height: 250,
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: iconvisible
+            ? IconButton(
+                onPressed: () {
+                  setState(() {
+                    iconvisible = !iconvisible;
+                  });
+                  _chewieController!.videoPlayerController.setVolume(1);
+                },
+                icon: Icon(
+                  Icons.volume_off_sharp,
+                  color: Colors.white,
+                  size: 30,
+                ))
+            : IconButton(
+                onPressed: () {
+                  setState(() {
+                    iconvisible = !iconvisible;
+                  });
+                  _chewieController!.videoPlayerController.setVolume(0);
+                },
+                icon: Icon(
+                  Icons.volume_down,
+                  color: Colors.white,
+                  size: 30,
+                )),
+      ),
+    );
+  }
+}
+
+class _videoplayer extends StatelessWidget {
+  const _videoplayer({
+    Key? key,
+    required VideoPlayerController videoPlayerController,
+    required ChewieController? chewieController,
+  })  : _videoPlayerController = videoPlayerController,
+        _chewieController = chewieController,
+        super(key: key);
+
+  final VideoPlayerController _videoPlayerController;
+  final ChewieController? _chewieController;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => _videoPlayerController.value.isPlaying
+          ? _videoPlayerController.pause()
+          : _videoPlayerController.play(),
+      child: GestureDetector(
+        child: Chewie(
+          controller: _chewieController!,
+        ),
+      ),
+    );
+  }
+}
+
+class _circularprogress extends StatelessWidget {
+  const _circularprogress({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        CircularProgressIndicator(
+          color: Colors.white,
+        ),
       ],
     );
   }
