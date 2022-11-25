@@ -21,4 +21,9 @@ class FastLaugConstants {
     "assets/shorts/short_7.mp4",
     "assets/shorts/short_8.mp4",
   ];
+
+  final String send = "2.80 B";
+  final String mylist = "My List";
+  final String play = "Play";
+  final String fav = "600K";
 }

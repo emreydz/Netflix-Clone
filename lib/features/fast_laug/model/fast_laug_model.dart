@@ -1,9 +1,11 @@
-class FastLaug {
-  String title;
+import 'package:flutter/material.dart';
+
+class LaugOption {
+  IconData icon;
   String subtitle;
 
-  FastLaug({
-    required this.title,
+  LaugOption({
+    required this.icon,
     required this.subtitle,
   });
 }

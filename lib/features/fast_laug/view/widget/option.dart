@@ -1,27 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/features/fast_laug/model/fast_laug_model.dart';
 
-class optionwidget extends StatelessWidget {
+import '../../../../core/constants/fast_laug/fast_laug_constant.dart';
+import '../../../../core/init/icon/app_icon.dart';
+
+AppIcon get _icons => AppIcon.init();
+FastLaugConstants get _item => FastLaugConstants.init();
+
+class optionwidget extends StatefulWidget {
   const optionwidget({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<optionwidget> createState() => _optionwidgetState();
+}
+
+class _optionwidgetState extends State<optionwidget> {
+  List<LaugOption> fastlaugoption = [
+    LaugOption(icon: _icons.itemsfastoption[0], subtitle: _item.fav),
+    LaugOption(icon: _icons.itemsfastoption[1], subtitle: _item.mylist),
+    LaugOption(icon: _icons.itemsfastoption[2], subtitle: _item.send),
+    LaugOption(icon: _icons.itemsfastoption[3], subtitle: _item.play),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         optionitem(
-          titleicon: Icons.favorite_outline,
-          subtitle: "600K",
+          titleicon: fastlaugoption[0].icon,
+          subtitle: fastlaugoption[0].subtitle,
         ),
-        SizedBox(height: 20),
-        optionitem(titleicon: Icons.add, subtitle: "My List"),
-        SizedBox(height: 20),
+        _heighht20(),
+        optionitem(
+          titleicon: fastlaugoption[1].icon,
+          subtitle: fastlaugoption[1].subtitle,
+        ),
+        _heighht20(),
         _transformicon(),
-        SizedBox(height: 20),
-        optionitem(titleicon: Icons.play_arrow, subtitle: "Play")
+        _heighht20(),
+        optionitem(
+          titleicon: fastlaugoption[3].icon,
+          subtitle: fastlaugoption[3].subtitle,
+        )
       ],
     );
   }
+
+  SizedBox _heighht20() => SizedBox(height: 20);
 
   Column _transformicon() {
     return Column(
@@ -29,13 +56,13 @@ class optionwidget extends StatelessWidget {
         Transform(
           transform: Matrix4.rotationZ(5.8),
           child: Icon(
-            Icons.send,
+            fastlaugoption[2].icon,
             color: Colors.white,
             size: 30,
           ),
         ),
         Text(
-          "2.80 B",
+          fastlaugoption[2].subtitle,
           style: TextStyle(color: Colors.white),
         )
       ],

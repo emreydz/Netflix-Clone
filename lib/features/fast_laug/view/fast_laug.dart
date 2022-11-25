@@ -12,7 +12,6 @@ class fast_laug extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            //We need swiper for every content
             Swiper(
               itemBuilder: (BuildContext context, int index) {
                 return ContentScreen(

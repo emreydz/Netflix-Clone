@@ -13,15 +13,18 @@ class AppIcon {
 
   AppIcon.init();
 
-  List items = [
-    // AntDesign.home,
-    // AntDesign.playcircleo,
-    // AntDesign.search1,
-    // AntDesign.download,
+  List itemsbottem = [
     Icons.home,
     Icons.play_circle_outline_outlined,
     Icons.my_library_books_rounded,
     Icons.search,
     Icons.download
+  ];
+
+  List itemsfastoption = [
+    Icons.favorite_outline,
+    Icons.add,
+    Icons.send,
+    Icons.play_arrow
   ];
 }
