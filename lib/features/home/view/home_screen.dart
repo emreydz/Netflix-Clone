@@ -5,17 +5,39 @@ import 'package:netflix_clone/features/bottom/view/bottom_navigation.dart';
 import 'package:netflix_clone/features/home/view/bannenrdetail.dart';
 
 import 'package:netflix_clone/features/home/view/home_detail.dart';
-import 'package:netflix_clone/features/home/widget/action.dart';
-import 'package:netflix_clone/features/home/widget/my_list.dart';
+import 'package:netflix_clone/features/home/view/widget/action.dart';
+import 'package:netflix_clone/features/home/view/widget/homefilmsheet.dart';
+import 'package:netflix_clone/features/home/view/widget/my_list.dart';
+import 'package:netflix_clone/features/home/view/widget/optionsheet.dart';
 
-class Home extends StatefulWidget {
+import '../../../core/components/ListTile/home_bottem_sheet.dart';
+import '../../../core/constants/home/home_constant.dart';
+import '../../../core/init/icon/app_icon.dart';
+import '../model/home_catagory_model.dart';
+
+HomeConstants get _item => HomeConstants.init();
+AppIcon get _icons => AppIcon.init();
+
+class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
 
-  @override
-  State<Home> createState() => _HomeState();
-}
+  final List<showimg> listcatagory = [
+    showimg(title: _item.trend, listname: mylist),
+    showimg(title: _item.list, listname: action),
+    showimg(title: _item.action, listname: popularList),
+    showimg(title: _item.teen, listname: teenMovie),
+    showimg(title: _item.romantic, listname: romantic),
+    showimg(title: _item.anime, listname: animeList),
+    showimg(title: _item.scifi, listname: sciMovie),
+    showimg(title: _item.Korean, listname: trendingList),
+  ];
+  final List<optionsheet> optionsheetbottom = [
+    optionsheet(icon: Icons.play_arrow, title: "Play"),
+    optionsheet(icon: Icons.download, title: "Download"),
+    optionsheet(icon: Icons.add, title: "My List"),
+    optionsheet(icon: Icons.share, title: "Share"),
+  ];
 
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -27,10 +49,10 @@ class _HomeState extends State<Home> {
             children: [
               Container(
                 height: size.height * 0.55,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
-                        "assets/images/banner.webp",
+                        _item.banner,
                       ),
                       fit: BoxFit.cover),
                 ),
@@ -50,81 +72,9 @@ class _HomeState extends State<Home> {
                     ),
                     Column(
                       children: [
-                        AppBar(
-                          backgroundColor: Colors.transparent,
-                          elevation: 0,
-                          leading: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: SizedBox(
-                                height: 50,
-                                child: Image.asset("assets/images/logo.ico")),
-                          ),
-                          actions: [
-                            Icon(
-                              Icons.connected_tv,
-                              size: 32,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Icon(
-                                Icons.person,
-                                size: 32,
-                              ),
-                            )
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              "Tv Shows",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
-                            ),
-                            Text(
-                              "Movies",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Categories",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Icon(
-                                  Icons.arrow_drop_down,
-                                  color: Colors.white,
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                        Container(
-                          height: size.height * 0.43,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Image.asset(
-                                "assets/images/title_img.webp",
-                                height: size.height * 0.15,
-                                width: size.width * 0.75,
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              const Text(
-                                "Exiting - Sci-Fi Drama - Sci-Fi Adventure",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 15),
-                              ),
-                            ],
-                          ),
-                        )
+                        _appbarhome(),
+                        _catagoryhome(),
+                        _bannertext(size)
                       ],
                     )
                   ],
@@ -132,321 +82,256 @@ class _HomeState extends State<Home> {
               ),
               Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: const [
-                          Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            "My List",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 17,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      GestureDetector(
-                        onTap: (() {}),
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                              top: 5, bottom: 5, left: 5, right: 10),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5)),
-                          child: Row(
-                            children: const [
-                              Icon(
-                                Icons.play_arrow,
-                                color: Colors.black,
-                                size: 27,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "Play",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          showModalBottomSheet<void>(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return Container(
-                                height: 290,
-                                color: Colors.black.withOpacity(0.9),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
-                                        height: 125,
-                                        child: GestureDetector(
-                                          onTap: (() {
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: ((context) =>
-                                                        BannerVideo())));
-                                          }),
-                                          child: Row(
-                                            children: [
-                                              SizedBox(
-                                                width: 100,
-                                                child: Image.asset(
-                                                  "assets/images/img_6.png",
-                                                  fit: BoxFit.fill,
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    right: 10, left: 10),
-                                                child: Container(
-                                                  width: 235,
-                                                  child: Column(
-                                                    children: [
-                                                      Align(
-                                                        alignment:
-                                                            Alignment.topLeft,
-                                                        child: Text(
-                                                          "Age of Samurai: Battle for Japan",
-                                                          style: TextStyle(
-                                                              fontSize: 22,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color:
-                                                                  Colors.white),
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        "It is a Canadian-American documentary television series that aired in 2021. ",
-                                                        style: TextStyle(
-                                                            fontSize: 14,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color:
-                                                                Colors.white),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                child: Align(
-                                                  alignment: Alignment.topRight,
-                                                  child: CircleAvatar(
-                                                      radius: 18,
-                                                      backgroundColor:
-                                                          Colors.black,
-                                                      child: IconButton(
-                                                        onPressed: () {
-                                                          Navigator.of(context)
-                                                              .pop();
-                                                        },
-                                                        icon: Center(
-                                                          child: Icon(
-                                                            Icons.close,
-                                                            color: Colors.white,
-                                                          ),
-                                                        ),
-                                                      )),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Column(
-                                          children: [
-                                            CircleAvatar(
-                                              radius: 18,
-                                              backgroundColor: Colors.white,
-                                              child: Icon(
-                                                Icons.play_arrow,
-                                                color: Colors.black,
-                                              ),
-                                            ), //CircleA
-                                            SizedBox(
-                                              height: 6,
-                                            ),
-                                            Text(
-                                              "Play",
-                                              style:
-                                                  TextStyle(color: Colors.grey),
-                                            )
-                                          ],
-                                        ),
-                                        Column(
-                                          children: [
-                                            CircleAvatar(
-                                              radius: 18,
-                                              backgroundColor: Colors.grey,
-                                              child: Icon(
-                                                Icons.download,
-                                                color: Colors.black,
-                                              ),
-                                            ), //CircleA
-                                            SizedBox(
-                                              height: 6,
-                                            ),
-                                            Text(
-                                              "Download",
-                                              style:
-                                                  TextStyle(color: Colors.grey),
-                                            )
-                                          ],
-                                        ),
-                                        Column(
-                                          children: [
-                                            CircleAvatar(
-                                              radius: 18,
-                                              backgroundColor: Colors.grey,
-                                              child: Icon(
-                                                Icons.add,
-                                                color: Colors.black,
-                                              ),
-                                            ), //CircleA
-                                            SizedBox(
-                                              height: 6,
-                                            ),
-                                            Text(
-                                              "My List",
-                                              style:
-                                                  TextStyle(color: Colors.grey),
-                                            )
-                                          ],
-                                        ),
-                                        Column(
-                                          children: [
-                                            CircleAvatar(
-                                              radius: 18,
-                                              backgroundColor: Colors.grey,
-                                              child: Icon(
-                                                Icons.share,
-                                                color: Colors.black,
-                                              ),
-                                            ), //CircleA
-                                            SizedBox(
-                                              height: 6,
-                                            ),
-                                            Text(
-                                              "Share",
-                                              style:
-                                                  TextStyle(color: Colors.grey),
-                                            )
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 12,
-                                    ),
-                                    Divider(
-                                      color: Colors.grey,
-                                      height: 2,
-                                    ),
-                                    GestureDetector(
-                                      onTap: (() {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: ((context) =>
-                                                    BannerVideo())));
-                                      }),
-                                      child: Center(
-                                        child: const ListTile(
-                                          leading: Icon(Icons.info_outline,
-                                              color: Colors.white),
-                                          title: Text("More...",
-                                              style: TextStyle(
-                                                  color: Colors.white)),
-                                          trailing: Icon(
-                                              Icons.chevron_right_outlined,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-                        },
-                        child: Column(
-                          children: const [
-                            Icon(
-                              Icons.info_outline,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "Info",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  )),
+                  child: _optionbanner(context)),
               SizedBox(
                 height: 20,
               ),
               HomeFilms(
-                label: "Trending Now",
-                filmList: mylist,
+                label: listcatagory[0].title,
+                filmList: listcatagory[0].listname,
               ),
               HomeactionFilms(
-                label: "My List",
-                filmList: action,
+                label: listcatagory[1].title,
+                filmList: listcatagory[1].listname,
               ),
               HomeFilms(
-                label: "Action & Adventure",
-                filmList: popularList,
+                label: listcatagory[2].title,
+                filmList: listcatagory[2].listname,
               ),
-              HomeactionFilms(label: "Teens", filmList: teenMovie),
               HomeactionFilms(
-                label: "Romantic Comedies",
-                filmList: romantic,
+                  label: listcatagory[3].title,
+                  filmList: listcatagory[3].listname),
+              HomeactionFilms(
+                label: listcatagory[4].title,
+                filmList: listcatagory[4].listname,
               ),
               HomeFilms(
-                label: "Anime Movies",
-                filmList: animeList,
+                label: listcatagory[5].title,
+                filmList: listcatagory[5].listname,
               ),
               HomeactionFilms(
-                label: "Sci-Fi Movies",
-                filmList: sciMovie,
+                label: listcatagory[6].title,
+                filmList: listcatagory[6].listname,
               ),
-              HomeFilms(label: "Trending", filmList: trendingList)
+              HomeFilms(
+                  label: listcatagory[7].title,
+                  filmList: listcatagory[7].listname)
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Row _optionbanner(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _optionbannerlist(),
+        _optionbannerplay(),
+        _optionbannerinfo(context),
+      ],
+    );
+  }
+
+  GestureDetector _optionbannerinfo(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        _bannersheetinfo(context);
+      },
+      child: Column(
+        children: const [
+          Icon(
+            Icons.info_outline,
+            color: Colors.white,
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Text(
+            "Info",
+            style: TextStyle(
+                color: Colors.white, fontSize: 17, fontWeight: FontWeight.w600),
+          ),
+        ],
+      ),
+    );
+  }
+
+  GestureDetector _optionbannerplay() {
+    return GestureDetector(
+      onTap: (() {}),
+      child: Container(
+        padding: const EdgeInsets.only(top: 5, bottom: 5, left: 5, right: 10),
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(5)),
+        child: Row(
+          children: const [
+            Icon(
+              Icons.play_arrow,
+              color: Colors.black,
+              size: 27,
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Text(
+              "Play",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Column _optionbannerlist() {
+    return Column(
+      children: const [
+        Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+        SizedBox(
+          height: 5,
+        ),
+        Text(
+          "My List",
+          style: TextStyle(
+              color: Colors.white, fontSize: 17, fontWeight: FontWeight.w600),
+        ),
+      ],
+    );
+  }
+
+  Container _bannertext(Size size) {
+    return Container(
+      height: size.height * 0.43,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Image.asset(
+            "assets/images/title_img.webp",
+            height: size.height * 0.15,
+            width: size.width * 0.75,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const Text(
+            "Exiting - Sci-Fi Drama - Sci-Fi Adventure",
+            style: TextStyle(color: Colors.white, fontSize: 15),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Row _catagoryhome() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Text(
+          "Tv Shows",
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
+        Text(
+          "Movies",
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
+        Text(
+          "Categories",
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        )
+      ],
+    );
+  }
+
+  AppBar _appbarhome() {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      leading: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: SizedBox(height: 50, child: Image.asset(_item.logo)),
+      ),
+      actions: [
+        Icon(
+          _icons.itemshomeappbar[0],
+          size: 32,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Icon(
+            _icons.itemshomeappbar[1],
+            size: 32,
+          ),
+        )
+      ],
+    );
+  }
+
+  Future<void> _bannersheetinfo(BuildContext context) {
+    return showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: 290,
+          color: Colors.black.withOpacity(0.9),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              detailsheetinfoto(
+                  ontop: (() {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: ((context) => BannerVideo())));
+                  }),
+                  img: _item.bottemsheetimg,
+                  title: _item.bottemsheettitle,
+                  subtitle: _item.bottemsheetsubtitle),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  optionsheet(
+                      icon: optionsheetbottom[0].icon,
+                      title: optionsheetbottom[0].title),
+                  optionsheet(
+                      icon: optionsheetbottom[1].icon,
+                      title: optionsheetbottom[1].title),
+                  optionsheet(
+                      icon: optionsheetbottom[2].icon,
+                      title: optionsheetbottom[2].title),
+                  optionsheet(
+                      icon: optionsheetbottom[3].icon,
+                      title: optionsheetbottom[3].title)
+                ],
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              Divider(
+                color: Colors.grey,
+                height: 2,
+              ),
+              GestureDetector(
+                onTap: (() {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: ((context) => BannerVideo())));
+                }),
+                child: Center(
+                  child: Listtile_home_bottemsheet(
+                      iconlead: Icons.info_outline,
+                      text: "More...",
+                      icontrail: Icons.chevron_right_outlined),
+                ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }

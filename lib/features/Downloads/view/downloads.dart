@@ -1,41 +1,18 @@
 import 'package:flutter/material.dart';
 
-class DownloadsPage extends StatefulWidget {
+import '../../../core/constants/downloads/downloads.dart';
+import '../../../core/init/icon/app_icon.dart';
+
+class DownloadsPage extends StatelessWidget {
   DownloadsPage({Key? key}) : super(key: key);
 
-  @override
-  State<DownloadsPage> createState() => _DownloadsPageState();
-}
+  AppIcon get _icons => AppIcon.init();
+  TabBarDownloads get _item => TabBarDownloads.init();
 
-class _DownloadsPageState extends State<DownloadsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Text("Downloads"),
-        actions: [
-          Icon(
-            Icons.connected_tv,
-          ),
-          SizedBox(
-            width: 16,
-          ),
-          Icon(
-            Icons.search,
-          ),
-          SizedBox(
-            width: 16,
-          ),
-          Icon(
-            Icons.person,
-          ),
-          SizedBox(
-            width: 16,
-          ),
-        ],
-      ),
+      appBar: _downappbar(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -52,31 +29,25 @@ class _DownloadsPageState extends State<DownloadsPage> {
                     width: 10,
                   ),
                   Text(
-                    "Smart Download",
-                    style: TextStyle(color: Colors.white),
+                    _item.smartdown,
+                    style: TextStyle(color: Colors.white.withOpacity(0.6)),
                   )
                 ],
               ),
-              SizedBox(
-                height: 50,
-              ),
+              _height50(),
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  "Downloads for you feature",
+                  _item.title,
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              _height20(),
               Text(
-                "We will download some content that we have specially selected for you from TV shows and movies so that you always have something to watch on your phone.",
+                _item.subtitle,
                 style: TextStyle(color: Colors.white.withOpacity(0.6)),
               ),
-              SizedBox(
-                height: 50,
-              ),
+              _height50(),
               Center(
                 child: Container(
                   height: 250,
@@ -92,28 +63,24 @@ class _DownloadsPageState extends State<DownloadsPage> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              _height20(),
               Container(
                 width: MediaQuery.of(context).size.width,
                 color: Colors.blue,
                 height: 40,
                 child: Center(
                     child: Text(
-                  "Set",
+                  _item.setbuton,
                   style: TextStyle(color: Colors.white, fontSize: 24),
                 )),
               ),
-              SizedBox(
-                height: 50,
-              ),
+              _height50(),
               Container(
                 color: Color.fromARGB(163, 66, 64, 64),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "Other content you can download",
+                    _item.otherbuton,
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),
@@ -122,6 +89,40 @@ class _DownloadsPageState extends State<DownloadsPage> {
           ),
         ),
       ),
+    );
+  }
+
+  AppBar _downappbar() {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      title: Text("Downloads"),
+      actions: [
+        Icon(_icons.itemsdownloadappbar[0]),
+        _width16(),
+        Icon(_icons.itemsdownloadappbar[1]),
+        _width16(),
+        Icon(_icons.itemsdownloadappbar[2]),
+        _width16(),
+      ],
+    );
+  }
+
+  SizedBox _width16() {
+    return SizedBox(
+      width: 16,
+    );
+  }
+
+  SizedBox _height20() {
+    return SizedBox(
+      height: 20,
+    );
+  }
+
+  SizedBox _height50() {
+    return SizedBox(
+      height: 50,
     );
   }
 }

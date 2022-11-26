@@ -81,6 +81,7 @@ class HomeactionFilms extends StatelessWidget {
                 onTap: (() {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: ((context) => HomeDetail(
+                            video: filmList[index]["video"],
                             name: filmList[index]["title"],
                             date: filmList[index]["date"],
                             age: filmList[index]["age"],
@@ -246,6 +247,7 @@ class HomeactionFilms extends StatelessWidget {
                 onTap: (() {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: ((context) => HomeDetail(
+                            video: filmList[index]["video"],
                             name: filmList[index]["title"],
                             date: filmList[index]["date"],
                             age: filmList[index]["age"],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/features/home/widget/tabbar_section.dart';
+import 'package:netflix_clone/features/home/view/widget/tabbar_section.dart';
 
 class sections extends StatefulWidget {
   sections({Key? key}) : super(key: key);

@@ -7,7 +7,8 @@ const List action = [
     "type": "Military Movies",
     "date": "2007",
     "age": "18+",
-    "time": "1h 56m"
+    "time": "1h 56m",
+    "video": "assets/videos/video_1.mp4"
   },
   {
     "img": "assets/images/lostbullet1.jpg",
@@ -17,7 +18,8 @@ const List action = [
     "type": "Dramas",
     "date": "2020",
     "age": "16+",
-    "time": "1h 33m"
+    "time": "1h 33m",
+    "video": "assets/videos/video_2.mp4"
   },
   {
     "img": "assets/images/enolaholmes1.jpg",
@@ -27,7 +29,8 @@ const List action = [
     "type": "Period Pieces",
     "date": "2022",
     "age": "18+",
-    "time": "2h 10m"
+    "time": "2h 10m",
+    "video": "assets/videos/video_3.mp4"
   },
   {
     "img": "assets/images/rednotice1.jpg",
@@ -37,7 +40,8 @@ const List action = [
     "type": "Comedies",
     "date": "2021",
     "age": "13+",
-    "time": "1h 58m"
+    "time": "1h 58m",
+    "video": "assets/videos/video_4.mp4"
   },
   {
     "img": "assets/images/swat1.jpg",
@@ -47,7 +51,8 @@ const List action = [
     "type": "Action & Adventure",
     "date": "2017",
     "age": "18+",
-    "time": "1h 29m"
+    "time": "1h 29m",
+    "video": "assets/videos/video_5.mp4"
   },
   {
     "img": "assets/images/rampage1.jpg",
@@ -57,7 +62,8 @@ const List action = [
     "type": "Sci-Fi Movies",
     "date": "2018",
     "age": "16+",
-    "time": "1h 47m"
+    "time": "1h 47m",
+    "video": "assets/videos/video_6.mp4"
   },
   {
     "img": "assets/images/lucy1.jpg",
@@ -67,7 +73,8 @@ const List action = [
     "type": "Sci-Fi Movies",
     "date": "2014",
     "age": "18+",
-    "time": "1h 29m"
+    "time": "1h 29m",
+    "video": "assets/videos/video_7.mp4"
   },
   {
     "img": "assets/images/dağ.jpg",
@@ -77,7 +84,8 @@ const List action = [
     "type": "Dramas",
     "date": "2016",
     "age": "16+",
-    "time": "2h 14m"
+    "time": "2h 14m",
+    "video": "assets/videos/video_8.mp4"
   },
   {
     "img": "assets/images/rampage1.jpg",
@@ -87,7 +95,8 @@ const List action = [
     "type": "Sci-Fi Movies",
     "date": "2018",
     "age": "16+",
-    "time": "1h 47m"
+    "time": "1h 47m",
+    "video": "assets/videos/video_9.mp4"
   },
   {
     "img": "assets/images/holidate.jpg",
@@ -97,7 +106,8 @@ const List action = [
     "type": "Romantic Comedies",
     "date": "2020",
     "age": "16+",
-    "time": "1h 44m"
+    "time": "1h 44m",
+    "video": "assets/videos/video_10.mp4"
   },
   {
     "img": "assets/images/97.jpg",
@@ -107,7 +117,8 @@ const List action = [
     "type": "Romantic Comedies",
     "date": "2011",
     "age": "18+",
-    "time": "1h 49m"
+    "time": "1h 49m",
+    "video": "assets/videos/video_1.mp4"
   },
   {
     "img": "assets/images/takeover1.jpg",
@@ -117,7 +128,8 @@ const List action = [
     "type": "Sci-Fi Movies",
     "date": "2020",
     "age": "18+",
-    "time": "1h 55m"
+    "time": "1h 55m",
+    "video": "assets/videos/video_2.mp4"
   },
 ];
 
@@ -130,7 +142,8 @@ List romantic = [
     "type": "Romantic Comedies",
     "date": "2020",
     "age": "7+",
-    "time": "1h 36m"
+    "time": "1h 36m",
+    "video": "assets/videos/video_1.mp4"
   },
   {
     "img": "assets/images/kardeşimbenim.jpg",
@@ -140,7 +153,8 @@ List romantic = [
     "type": "Romantic Comedies",
     "date": "2016",
     "age": "16+",
-    "time": "2h"
+    "time": "2h",
+    "video": "assets/videos/video_2.mp4"
   },
   {
     "img": "assets/images/naked1.jpg",
@@ -150,7 +164,8 @@ List romantic = [
     "type": "Romantic Comedies",
     "date": "2017",
     "age": "13+",
-    "time": "1h 36m"
+    "time": "1h 36m",
+    "video": "assets/videos/video_3.mp4"
   },
   {
     "img": "assets/images/milf1.jpg",
@@ -160,7 +175,8 @@ List romantic = [
     "type": "Romantic Comedies",
     "date": "2018",
     "age": "18+",
-    "time": "1h 41m"
+    "time": "1h 41m",
+    "video": "assets/videos/video_4.mp4"
   },
   {
     "img": "assets/images/friendswith1.jpg",
@@ -170,7 +186,8 @@ List romantic = [
     "type": "Romantic Comedies",
     "date": "2011",
     "age": "18+",
-    "time": "1h 49m"
+    "time": "1h 49m",
+    "video": "assets/videos/video_5.mp4"
   },
 ];
 
@@ -183,7 +200,8 @@ List sciMovie = [
     "type": "Sci-Fi Movies",
     "date": "2018",
     "age": "16+",
-    "time": "1h 47m"
+    "time": "1h 47m",
+    "video": "assets/videos/video_6.mp4"
   },
   {
     "img": "assets/images/takeover1.jpg",
@@ -193,7 +211,8 @@ List sciMovie = [
     "type": "Sci-Fi Movies",
     "date": "2020",
     "age": "18+",
-    "time": "1h 55m"
+    "time": "1h 55m",
+    "video": "assets/videos/video_7.mp4"
   },
   {
     "img": "assets/images/lucy1.jpg",
@@ -203,7 +222,8 @@ List sciMovie = [
     "type": "Sci-Fi Movies",
     "date": "2014",
     "age": "18+",
-    "time": "1h 29m"
+    "time": "1h 29m",
+    "video": "assets/videos/video_8.mp4"
   },
   {
     "img": "assets/images/bloodshoot1.jpg",
@@ -213,7 +233,8 @@ List sciMovie = [
     "type": "Sci-Fi Movies",
     "date": "2020",
     "age": "16+",
-    "time": "1h 49m"
+    "time": "1h 49m",
+    "video": "assets/videos/video_9.mp4"
   },
   {
     "img": "assets/images/rampage1.jpg",
@@ -223,7 +244,8 @@ List sciMovie = [
     "type": "Sci-Fi Movies",
     "date": "2018",
     "age": "16+",
-    "time": "1h 47m"
+    "time": "1h 47m",
+    "video": "assets/videos/video_10.mp4"
   },
 ];
 
@@ -236,7 +258,8 @@ List teenMovie = [
     "type": "Family Movies",
     "date": "2022",
     "age": "7+",
-    "time": "1h 41m"
+    "time": "1h 41m",
+    "video": "assets/videos/video_1.mp4"
   },
   {
     "img": "assets/images/perfectdate.jpg",
@@ -246,7 +269,8 @@ List teenMovie = [
     "type": "Romantic Comedies",
     "date": "2019",
     "age": "18+",
-    "time": "1h 30m"
+    "time": "1h 30m",
+    "video": "assets/videos/video_2.mp4"
   },
   {
     "img": "assets/images/falling.jpg",
@@ -256,7 +280,8 @@ List teenMovie = [
     "type": "Romantic Comedies",
     "date": "2013",
     "age": "18+",
-    "time": "1h 35m"
+    "time": "1h 35m",
+    "video": "assets/videos/video_3.mp4"
   },
   {
     "img": "assets/images/holidate.jpg",
@@ -266,7 +291,8 @@ List teenMovie = [
     "type": "Romantic Comedies",
     "date": "2020",
     "age": "16+",
-    "time": "1h 44m"
+    "time": "1h 44m",
+    "video": "assets/videos/video_4.mp4"
   },
   {
     "img": "assets/images/97.jpg",
@@ -276,7 +302,8 @@ List teenMovie = [
     "type": "Romantic Comedies",
     "date": "2011",
     "age": "18+",
-    "time": "1h 49m"
+    "time": "1h 49m",
+    "video": "assets/videos/video_5.mp4"
   },
 ];
 

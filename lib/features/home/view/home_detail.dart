@@ -6,6 +6,7 @@ import 'package:video_player/video_player.dart';
 
 class HomeDetail extends StatefulWidget {
   final String name;
+  final String video;
   final String img;
   final String describ;
   final String date;
@@ -20,7 +21,8 @@ class HomeDetail extends StatefulWidget {
       required this.date,
       required this.min,
       required this.type,
-      required this.age})
+      required this.age,
+      required this.video})
       : super(key: key);
 
   @override
@@ -36,7 +38,7 @@ class _HomeDetailState extends State<HomeDetail> with TickerProviderStateMixin {
     if (!init) {
       _controller.pause();
     }
-    _controller = VideoPlayerController.asset("assets/videos/video_2.mp4")
+    _controller = VideoPlayerController.asset(widget.video)
       ..addListener(() {
         setState(() {});
       })

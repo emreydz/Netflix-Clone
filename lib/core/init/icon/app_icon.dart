@@ -27,4 +27,15 @@ class AppIcon {
     Icons.send,
     Icons.play_arrow
   ];
+
+  List itemsdownloadappbar = [
+    Icons.connected_tv,
+    Icons.search,
+    Icons.person,
+  ];
+
+  List itemshomeappbar = [
+    Icons.connected_tv,
+    Icons.person,
+  ];
 }

@@ -17,47 +17,63 @@ class SearchedItems extends StatelessWidget {
           children: [
             Row(
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Image.asset(
-                    searched[index]["img"],
-                    width: 130,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                const SizedBox(
-                  width: 8,
-                ),
-                Container(
-                  width: (size.width - 30) * 0.4,
-                  child: Text(
-                    searched[index]["title"],
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
+                _leadimg(),
+                _width8(),
+                _searchtitle(size),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.black,
-                  border: Border.all(color: Colors.white, width: 2),
-                ),
-                child: const Icon(
-                  Icons.play_arrow,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            _searchicon(),
           ],
         ),
+      ),
+    );
+  }
+
+  SizedBox _width8() {
+    return const SizedBox(
+      width: 8,
+    );
+  }
+
+  Padding _searchicon() {
+    return Padding(
+      padding: const EdgeInsets.only(right: 20),
+      child: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.black,
+          border: Border.all(color: Colors.white, width: 2),
+        ),
+        child: const Icon(
+          Icons.play_arrow,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+
+  Container _searchtitle(Size size) {
+    return Container(
+      width: (size.width - 30) * 0.4,
+      child: Text(
+        searched[index]["title"],
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 15,
+        ),
+      ),
+    );
+  }
+
+  Container _leadimg() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Image.asset(
+        searched[index]["img"],
+        width: 130,
+        fit: BoxFit.cover,
       ),
     );
   }
