@@ -70,17 +70,7 @@ class _HomeDetailState extends State<HomeDetail> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
     return Scaffold(
-        appBar: AppBar(
-          leading: Icon(
-            Icons.arrow_back_rounded,
-          ),
-          backgroundColor: Colors.black,
-          elevation: 0,
-          actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-            Icon(Icons.person)
-          ],
-        ),
+        appBar: _detailappbar(),
         body: SingleChildScrollView(
             child: Column(children: [
           Container(
@@ -394,5 +384,19 @@ class _HomeDetailState extends State<HomeDetail> with TickerProviderStateMixin {
             ]),
           )
         ])));
+  }
+
+  AppBar _detailappbar() {
+    return AppBar(
+      leading: Icon(
+        Icons.arrow_back_rounded,
+      ),
+      backgroundColor: Colors.black,
+      elevation: 0,
+      actions: [
+        IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+        Icon(Icons.person)
+      ],
+    );
   }
 }

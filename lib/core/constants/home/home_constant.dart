@@ -16,8 +16,9 @@ class HomeConstants {
   String banner = "assets/images/banner.webp";
   String logo = "assets/images/logo.ico";
   String bottemsheetimg = "assets/images/img_6.png";
+  String bannertitle = "assets/images/title_img.webp";
 
-  //category
+  //categoryMovie
   String trend = "Trending";
   String list = "My List";
   String action = "Action & Adventure";
@@ -31,4 +32,16 @@ class HomeConstants {
   String bottemsheettitle = "Age of Samurai: Battle for Japan";
   String bottemsheetsubtitle =
       "It is a Canadian-American documentary television series that aired in 2021. ";
+
+  //homecatagory
+  String movie = "Movies";
+  String tv = "Tv Shows";
+  String category = "Categories";
+
+  String bannercategory = "Exiting - Sci-Fi Drama - Sci-Fi Adventure";
+
+  String play = "Play";
+  String download = "Download";
+  String share = "Share";
+  String info = "Info";
 }

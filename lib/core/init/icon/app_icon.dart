@@ -38,4 +38,10 @@ class AppIcon {
     Icons.connected_tv,
     Icons.person,
   ];
+  List optionseet = [
+    Icons.play_arrow,
+    Icons.download,
+    Icons.add,
+    Icons.share,
+  ];
 }

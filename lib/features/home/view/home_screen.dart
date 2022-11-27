@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/core/components/Text/text_category.dart';
 import 'package:netflix_clone/core/data/home_page_json.dart';
 import 'package:netflix_clone/core/data/json/category.dart';
 import 'package:netflix_clone/features/bottom/view/bottom_navigation.dart';
@@ -8,6 +9,7 @@ import 'package:netflix_clone/features/home/view/home_detail.dart';
 import 'package:netflix_clone/features/home/view/widget/action.dart';
 import 'package:netflix_clone/features/home/view/widget/homefilmsheet.dart';
 import 'package:netflix_clone/features/home/view/widget/my_list.dart';
+import 'package:netflix_clone/features/home/view/widget/option_banner_item.dart';
 import 'package:netflix_clone/features/home/view/widget/optionsheet.dart';
 
 import '../../../core/components/ListTile/home_bottem_sheet.dart';
@@ -32,10 +34,10 @@ class Home extends StatelessWidget {
     showimg(title: _item.Korean, listname: trendingList),
   ];
   final List<optionsheet> optionsheetbottom = [
-    optionsheet(icon: Icons.play_arrow, title: "Play"),
-    optionsheet(icon: Icons.download, title: "Download"),
-    optionsheet(icon: Icons.add, title: "My List"),
-    optionsheet(icon: Icons.share, title: "Share"),
+    optionsheet(icon: _icons.optionseet[0], title: _item.play),
+    optionsheet(icon: _icons.optionseet[1], title: _item.download),
+    optionsheet(icon: _icons.optionseet[2], title: _item.list),
+    optionsheet(icon: _icons.optionseet[3], title: _item.share),
   ];
 
   @override
@@ -127,34 +129,16 @@ class Home extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _optionbannerlist(),
+        optionbanneritem(
+          icon: Icons.info_outline,
+          title: _item.info,
+          ontap: () {
+            _bannersheetinfo(context);
+          },
+        ),
         _optionbannerplay(),
-        _optionbannerinfo(context),
+        optionbanneritem(icon: Icons.add, title: _item.list, ontap: () {}),
       ],
-    );
-  }
-
-  GestureDetector _optionbannerinfo(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        _bannersheetinfo(context);
-      },
-      child: Column(
-        children: const [
-          Icon(
-            Icons.info_outline,
-            color: Colors.white,
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Text(
-            "Info",
-            style: TextStyle(
-                color: Colors.white, fontSize: 17, fontWeight: FontWeight.w600),
-          ),
-        ],
-      ),
     );
   }
 
@@ -166,7 +150,7 @@ class Home extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(5)),
         child: Row(
-          children: const [
+          children: [
             Icon(
               Icons.play_arrow,
               color: Colors.black,
@@ -176,7 +160,7 @@ class Home extends StatelessWidget {
               width: 5,
             ),
             Text(
-              "Play",
+              _item.play,
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 16,
@@ -188,25 +172,6 @@ class Home extends StatelessWidget {
     );
   }
 
-  Column _optionbannerlist() {
-    return Column(
-      children: const [
-        Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Text(
-          "My List",
-          style: TextStyle(
-              color: Colors.white, fontSize: 17, fontWeight: FontWeight.w600),
-        ),
-      ],
-    );
-  }
-
   Container _bannertext(Size size) {
     return Container(
       height: size.height * 0.43,
@@ -214,15 +179,15 @@ class Home extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Image.asset(
-            "assets/images/title_img.webp",
+            _item.bannertitle,
             height: size.height * 0.15,
             width: size.width * 0.75,
           ),
           const SizedBox(
             height: 10,
           ),
-          const Text(
-            "Exiting - Sci-Fi Drama - Sci-Fi Adventure",
+          Text(
+            _item.bannercategory,
             style: TextStyle(color: Colors.white, fontSize: 15),
           ),
         ],
@@ -234,18 +199,9 @@ class Home extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Text(
-          "Tv Shows",
-          style: TextStyle(color: Colors.white, fontSize: 18),
-        ),
-        Text(
-          "Movies",
-          style: TextStyle(color: Colors.white, fontSize: 18),
-        ),
-        Text(
-          "Categories",
-          style: TextStyle(color: Colors.white, fontSize: 18),
-        )
+        text_category(title: _item.tv),
+        text_category(title: _item.movie),
+        text_category(title: _item.category),
       ],
     );
   }

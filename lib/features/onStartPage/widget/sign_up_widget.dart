@@ -25,7 +25,7 @@ class SignUpWidget extends StatelessWidget {
           );
         },
         child: const Text(
-          "SIGN OUT",
+          "Get Started",
           textAlign: TextAlign.center,
           style: TextStyle(
               color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
