@@ -22,7 +22,7 @@ class TabBarConstants {
 
   TabBarConstants.init();
 
-  List<Widget> screens = <Widget>[
+  List<Widget> pages = <Widget>[
     Home(),
     HotAndNew(),
     fast_laug(),

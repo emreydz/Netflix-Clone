@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class text_category extends StatelessWidget {
+class TextCategory extends StatelessWidget {
   final String title;
-  const text_category({
+  const TextCategory({
     Key? key,
     required this.title,
   }) : super(key: key);
@@ -11,7 +11,10 @@ class text_category extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: TextStyle(color: Colors.white, fontSize: 18),
+      style: const TextStyle(
+        color: Colors.white,
+        fontSize: 18,
+      ),
     );
   }
 }

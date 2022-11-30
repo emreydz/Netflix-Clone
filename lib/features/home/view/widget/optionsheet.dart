@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class optionsheet extends StatelessWidget {
+class OptainSheet extends StatelessWidget {
   final IconData icon;
   final String title;
-  const optionsheet({
+  const OptainSheet({
     Key? key,
     required this.icon,
     required this.title,

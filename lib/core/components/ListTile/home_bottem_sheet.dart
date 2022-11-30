@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Listtile_home_bottemsheet extends StatelessWidget {
+class ListTileBottomSheet extends StatelessWidget {
   final IconData iconlead;
   final String text;
   final IconData icontrail;
-  const Listtile_home_bottemsheet({
+  const ListTileBottomSheet({
     Key? key,
     required this.iconlead,
     required this.text,

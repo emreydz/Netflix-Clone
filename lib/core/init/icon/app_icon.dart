@@ -44,4 +44,11 @@ class AppIcon {
     Icons.add,
     Icons.share,
   ];
+
+  List optiondetail = [
+    Icons.add,
+    Icons.done_outline,
+    Icons.share,
+    Icons.download,
+  ];
 }

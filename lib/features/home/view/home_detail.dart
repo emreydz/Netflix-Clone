@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/features/home/view/tabbar_screen/B%C3%B6l%C3%BCmler.dart';
-import 'package:netflix_clone/features/home/view/tabbar_screen/benzerler.dart';
-import 'package:netflix_clone/features/home/view/tabbar_screen/fragmanlar.dart';
+import 'package:netflix_clone/core/components/Text/text_detail_movie.dart';
+import 'package:netflix_clone/core/components/tabbar/home_detail_tabbar.dart';
+import 'package:netflix_clone/core/constants/home/home_detail_constant.dart';
+import 'package:netflix_clone/core/init/icon/app_icon.dart';
+import 'package:netflix_clone/features/home/view/widget/home_detail_option_movie.dart';
+import 'package:netflix_clone/features/home/view/widget/home_detail_video_buton.dart';
+import 'package:netflix_clone/features/home/view/widget/optionsheet.dart';
+import 'package:netflix_clone/features/home/view/widget/tabbar_screen/B%C3%B6l%C3%BCmler.dart';
+import 'package:netflix_clone/features/home/view/widget/tabbar_screen/benzerler.dart';
+import 'package:netflix_clone/features/home/view/widget/tabbar_screen/fragmanlar.dart';
 import 'package:video_player/video_player.dart';
+
+HomeDetailConstants get _item => HomeDetailConstants.init();
+AppIcon get _icons => AppIcon.init();
 
 class HomeDetail extends StatefulWidget {
   final String name;
@@ -30,6 +40,12 @@ class HomeDetail extends StatefulWidget {
 }
 
 class _HomeDetailState extends State<HomeDetail> with TickerProviderStateMixin {
+  final List<OptainSheet> optionsdetaillist = [
+    OptainSheet(icon: _icons.optiondetail[0], title: _item.list),
+    OptainSheet(icon: _icons.optiondetail[1], title: _item.rate),
+    OptainSheet(icon: _icons.optiondetail[2], title: _item.share),
+    OptainSheet(icon: _icons.optiondetail[3], title: _item.season1),
+  ];
   late final VideoPlayerController _controller;
   bool iconvisible = false;
   bool isplayingbar = true;
@@ -79,52 +95,9 @@ class _HomeDetailState extends State<HomeDetail> with TickerProviderStateMixin {
                       children: [
                         Stack(
                           children: [
-                            InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    iconvisible = !iconvisible;
-                                    isplayingbar = !isplayingbar;
-                                  });
-                                },
-                                child: SizedBox(
-                                    height: 275,
-                                    child: VideoPlayer(_controller))),
-                            Positioned(
-                              child: Container(
-                                color: Colors.black.withOpacity(0.6),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 12, left: 12, bottom: 6, top: 6),
-                                  child: Text(
-                                    "Özel Video",
-                                    style: TextStyle(
-                                        fontSize: 16, color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                              left: 8,
-                              bottom: 30,
-                            ),
-                            Positioned(
-                              left: 175,
-                              top: 120,
-                              child: Center(
-                                child: iconvisible
-                                    ? IconButton(
-                                        onPressed: (() =>
-                                            _controller.value.isPlaying
-                                                ? _controller.pause()
-                                                : _controller.play()),
-                                        icon: Icon(
-                                          _controller.value.isPlaying
-                                              ? Icons.pause
-                                              : Icons.play_arrow,
-                                          color: Colors.white,
-                                          size: 40,
-                                        ))
-                                    : SizedBox(),
-                              ),
-                            ),
+                            _VideoPlayer(),
+                            PositionedVideoPlayer(),
+                            PositionedVideoControllerIcon(),
                           ],
                         ),
                         isplayingbar
@@ -197,80 +170,25 @@ class _HomeDetailState extends State<HomeDetail> with TickerProviderStateMixin {
             padding: const EdgeInsets.only(left: 8),
             child: Row(
               children: [
-                Text(
-                  widget.date,
-                  style: TextStyle(
-                      color: Colors.white.withOpacity(0.4), fontSize: 16),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  widget.age,
-                  style: TextStyle(
-                      color: Colors.white.withOpacity(0.4), fontSize: 16),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  "season 2",
-                  style: TextStyle(
-                      color: Colors.white.withOpacity(0.4), fontSize: 16),
-                ),
+                TextDetailMovie(text: widget.date),
+                _width10(),
+                TextDetailMovie(text: widget.age),
+                _width10(),
+                TextDetailMovie(text: _item.season2)
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 50,
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 150),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.play_arrow,
-                      size: 30,
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      "Play",
-                      style: TextStyle(fontSize: 18),
-                    )
-                  ],
-                ),
-              ),
-            ),
+          HomeDetailVideoButon(
+            num: 150,
+            icon: Icons.play_arrow,
+            text: _item.play,
+            color: Colors.white,
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 50,
-              color: Color.fromARGB(255, 49, 49, 49),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 100),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.file_download_outlined,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      "Download:S1:E1",
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    )
-                  ],
-                ),
-              ),
-            ),
+          HomeDetailVideoButon(
+            icon: Icons.file_download_outlined,
+            num: 100,
+            text: _item.Download,
+            color: Color.fromARGB(255, 49, 49, 49),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -283,93 +201,36 @@ class _HomeDetailState extends State<HomeDetail> with TickerProviderStateMixin {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              "Type: ${widget.type}",
+              "${_item.type}: ${widget.type}",
               style:
                   TextStyle(color: Colors.white.withOpacity(0.5), fontSize: 16),
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
+          _height10(),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Column(
-                  children: [
-                    Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "My List",
-                      style: TextStyle(
-                          color: Colors.white.withOpacity(0.5), fontSize: 16),
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    Icon(
-                      Icons.done_outline,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "Rate",
-                      style: TextStyle(
-                          color: Colors.white.withOpacity(0.5), fontSize: 16),
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    Icon(
-                      Icons.share,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "Share",
-                      style: TextStyle(
-                          color: Colors.white.withOpacity(0.5), fontSize: 16),
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    Icon(
-                      Icons.download,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "season 1",
-                      style: TextStyle(
-                          color: Colors.white.withOpacity(0.5), fontSize: 16),
-                    )
-                  ],
-                ),
+                HomeDetailOptionMovie(
+                    icon: optionsdetaillist[0].icon,
+                    text: optionsdetaillist[0].title),
+                HomeDetailOptionMovie(
+                    icon: optionsdetaillist[1].icon,
+                    text: optionsdetaillist[1].title),
+                HomeDetailOptionMovie(
+                    icon: optionsdetaillist[2].icon,
+                    text: optionsdetaillist[2].title),
+                HomeDetailOptionMovie(
+                    icon: optionsdetaillist[3].icon,
+                    text: optionsdetaillist[3].title),
               ],
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Divider(
-            height: 10,
-            color: Colors.white.withOpacity(0.5),
-          ),
+          _height10(),
+          _divider(),
           Container(
-            child: TabBar(controller: _tabController, tabs: [
-              Tab(
-                text: "Sections",
-              ),
-              Tab(
-                text: "Trailers",
-              ),
-              Tab(
-                text: "Similar",
-              )
-            ]),
+            child: HomeDetailTabBar(tabController: _tabController),
           ),
           Container(
             width: double.maxFinite,
@@ -384,6 +245,77 @@ class _HomeDetailState extends State<HomeDetail> with TickerProviderStateMixin {
             ]),
           )
         ])));
+  }
+
+  Positioned PositionedVideoControllerIcon() {
+    return Positioned(
+      left: 175,
+      top: 120,
+      child: Center(
+        child: iconvisible
+            ? IconButton(
+                onPressed: (() => _controller.value.isPlaying
+                    ? _controller.pause()
+                    : _controller.play()),
+                icon: Icon(
+                  _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+                  color: Colors.white,
+                  size: 40,
+                ))
+            : SizedBox(),
+      ),
+    );
+  }
+
+  Positioned PositionedVideoPlayer() {
+    return Positioned(
+      left: 8,
+      bottom: 30,
+      child: VideoplayerTextContainer(),
+    );
+  }
+
+  Container VideoplayerTextContainer() {
+    return Container(
+      color: Colors.black.withOpacity(0.6),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 12, left: 12, bottom: 6, top: 6),
+        child: Text(
+          _item.ozelvideo,
+          style: TextStyle(fontSize: 16, color: Colors.white),
+        ),
+      ),
+    );
+  }
+
+  InkWell _VideoPlayer() {
+    return InkWell(
+        onTap: () {
+          setState(() {
+            iconvisible = !iconvisible;
+            isplayingbar = !isplayingbar;
+          });
+        },
+        child: SizedBox(height: 275, child: VideoPlayer(_controller)));
+  }
+
+  Divider _divider() {
+    return Divider(
+      height: 10,
+      color: Colors.white.withOpacity(0.5),
+    );
+  }
+
+  SizedBox _height10() {
+    return SizedBox(
+      height: 10,
+    );
+  }
+
+  SizedBox _width10() {
+    return SizedBox(
+      width: 10,
+    );
   }
 
   AppBar _detailappbar() {

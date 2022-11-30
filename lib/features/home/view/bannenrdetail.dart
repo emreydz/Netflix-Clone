@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/features/bottom/view/bottom_navigation.dart';
-import 'package:netflix_clone/features/home/view/tabbar_screen/B%C3%B6l%C3%BCmler.dart';
-import 'package:netflix_clone/features/home/view/tabbar_screen/benzerler.dart';
-import 'package:netflix_clone/features/home/view/tabbar_screen/fragmanlar.dart';
+import 'package:netflix_clone/features/home/view/widget/tabbar_screen/B%C3%B6l%C3%BCmler.dart';
+import 'package:netflix_clone/features/home/view/widget/tabbar_screen/benzerler.dart';
+import 'package:netflix_clone/features/home/view/widget/tabbar_screen/fragmanlar.dart';
 
 import 'package:video_player/video_player.dart';
 

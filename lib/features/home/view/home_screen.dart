@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/core/components/Container/home_banner_container.dart';
+import 'package:netflix_clone/core/components/Container/option_banner_play_container.dart';
 import 'package:netflix_clone/core/components/Text/text_category.dart';
+import 'package:netflix_clone/core/components/listtile/home_bottem_sheet.dart';
+import 'package:netflix_clone/core/components/row/option_sheet_row.dart';
+import 'package:netflix_clone/core/constants/home/home_constant.dart';
 import 'package:netflix_clone/core/data/home_page_json.dart';
 import 'package:netflix_clone/core/data/json/category.dart';
-import 'package:netflix_clone/features/bottom/view/bottom_navigation.dart';
+import 'package:netflix_clone/core/init/icon/app_icon.dart';
+import 'package:netflix_clone/features/home/model/home_catagory_model.dart';
 import 'package:netflix_clone/features/home/view/bannenrdetail.dart';
-
-import 'package:netflix_clone/features/home/view/home_detail.dart';
 import 'package:netflix_clone/features/home/view/widget/action.dart';
 import 'package:netflix_clone/features/home/view/widget/homefilmsheet.dart';
 import 'package:netflix_clone/features/home/view/widget/my_list.dart';
 import 'package:netflix_clone/features/home/view/widget/option_banner_item.dart';
 import 'package:netflix_clone/features/home/view/widget/optionsheet.dart';
-
-import '../../../core/components/ListTile/home_bottem_sheet.dart';
-import '../../../core/constants/home/home_constant.dart';
-import '../../../core/init/icon/app_icon.dart';
-import '../model/home_catagory_model.dart';
 
 HomeConstants get _item => HomeConstants.init();
 AppIcon get _icons => AppIcon.init();
@@ -33,11 +32,11 @@ class Home extends StatelessWidget {
     showimg(title: _item.scifi, listname: sciMovie),
     showimg(title: _item.Korean, listname: trendingList),
   ];
-  final List<optionsheet> optionsheetbottom = [
-    optionsheet(icon: _icons.optionseet[0], title: _item.play),
-    optionsheet(icon: _icons.optionseet[1], title: _item.download),
-    optionsheet(icon: _icons.optionseet[2], title: _item.list),
-    optionsheet(icon: _icons.optionseet[3], title: _item.share),
+  final List<OptainSheet> optionsheetbottom = [
+    OptainSheet(icon: _icons.optionseet[0], title: _item.play),
+    OptainSheet(icon: _icons.optionseet[1], title: _item.download),
+    OptainSheet(icon: _icons.optionseet[2], title: _item.list),
+    OptainSheet(icon: _icons.optionseet[3], title: _item.share),
   ];
 
   @override
@@ -49,45 +48,11 @@ class Home extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                height: size.height * 0.55,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(
-                        _item.banner,
-                      ),
-                      fit: BoxFit.cover),
-                ),
-                child: Stack(
-                  children: [
-                    Container(
-                      height: size.height * 0.55,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [
-                              Colors.black.withOpacity(0.5),
-                              Colors.black.withOpacity(0.1),
-                            ],
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter),
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        _appbarhome(),
-                        _catagoryhome(),
-                        _bannertext(size)
-                      ],
-                    )
-                  ],
-                ),
-              ),
+              _homebannercontainer(size),
               Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: _optionbanner(context)),
-              SizedBox(
-                height: 20,
-              ),
+              _height20(),
               HomeFilms(
                 label: listcatagory[0].title,
                 filmList: listcatagory[0].listname,
@@ -125,6 +90,19 @@ class Home extends StatelessWidget {
     );
   }
 
+  SizedBox _height20() {
+    return SizedBox(
+      height: 20,
+    );
+  }
+
+  HomeBannerContainer _homebannercontainer(Size size) {
+    return HomeBannerContainer(
+        column: Column(
+      children: [_appbarhome(), _catagoryhome(), _bannertext(size)],
+    ));
+  }
+
   Row _optionbanner(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -145,11 +123,8 @@ class Home extends StatelessWidget {
   GestureDetector _optionbannerplay() {
     return GestureDetector(
       onTap: (() {}),
-      child: Container(
-        padding: const EdgeInsets.only(top: 5, bottom: 5, left: 5, right: 10),
-        decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(5)),
-        child: Row(
+      child: OptionBannerPlayContainer(
+        row: Row(
           children: [
             Icon(
               Icons.play_arrow,
@@ -199,9 +174,9 @@ class Home extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        text_category(title: _item.tv),
-        text_category(title: _item.movie),
-        text_category(title: _item.category),
+        TextCategory(title: _item.tv),
+        TextCategory(title: _item.movie),
+        TextCategory(title: _item.category),
       ],
     );
   }
@@ -248,37 +223,18 @@ class Home extends StatelessWidget {
                   img: _item.bottemsheetimg,
                   title: _item.bottemsheettitle,
                   subtitle: _item.bottemsheetsubtitle),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  optionsheet(
-                      icon: optionsheetbottom[0].icon,
-                      title: optionsheetbottom[0].title),
-                  optionsheet(
-                      icon: optionsheetbottom[1].icon,
-                      title: optionsheetbottom[1].title),
-                  optionsheet(
-                      icon: optionsheetbottom[2].icon,
-                      title: optionsheetbottom[2].title),
-                  optionsheet(
-                      icon: optionsheetbottom[3].icon,
-                      title: optionsheetbottom[3].title)
-                ],
-              ),
-              SizedBox(
+              OptionSheetRow(optionsheetbottom: optionsheetbottom),
+              const SizedBox(
                 height: 12,
               ),
-              Divider(
-                color: Colors.grey,
-                height: 2,
-              ),
+              _divider(),
               GestureDetector(
                 onTap: (() {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: ((context) => BannerVideo())));
                 }),
-                child: Center(
-                  child: Listtile_home_bottemsheet(
+                child: const Center(
+                  child: ListTileBottomSheet(
                       iconlead: Icons.info_outline,
                       text: "More...",
                       icontrail: Icons.chevron_right_outlined),
@@ -288,6 +244,13 @@ class Home extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  Divider _divider() {
+    return const Divider(
+      color: Colors.grey,
+      height: 2,
     );
   }
 }
