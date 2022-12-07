@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/core/components/Container/everone_watch_container.dart';
+import 'package:netflix_clone/core/components/Icon/everyone_watch_icon.dart';
+import 'package:netflix_clone/core/components/Text/text_tabsview_everyonewatch_detail.dart';
+import 'package:netflix_clone/core/components/stack/tabsview_stack.dart';
 
 class EveronewatchWidget extends StatelessWidget {
   final List everyonewatch;
@@ -8,49 +12,21 @@ class EveronewatchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          height: size.height * 0.35,
-          width: size.width,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                everyonewatch[index]["img"],
-              ),
-              fit: BoxFit.cover,
-            ),
-          ),
+        Everyone_Watch_Container(
+          img: everyonewatch[index]["img"],
         ),
-        const SizedBox(
-          height: 15,
-        ),
+        _height15(),
         everyonewatch[index]["duration"]
             ? Row(
                 children: [
-                  Stack(
-                    alignment: Alignment.centerLeft,
-                    children: [
-                      Container(
-                        height: 2.5,
-                        width: size.width,
-                        color: Colors.grey,
-                      ),
-                      Container(
-                        height: 2.5,
-                        width: size.width * 0.35,
-                        color: Colors.red,
-                      ),
-                    ],
-                  ),
+                  const Tabsview_stack(),
                 ],
               )
             : Container(),
-        SizedBox(
-          height: 10,
-        ),
+        _height15(),
         Padding(
           padding: const EdgeInsets.only(
             right: 16,
@@ -58,59 +34,66 @@ class EveronewatchWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Image.asset(
-                  everyonewatch[index]["title_img"],
-                  width: 170,
-                ),
+              _everone_watch_titleimg(),
+              Everone_Watch_Icon(
+                icon: Icons.share,
               ),
-              Icon(
-                Icons.share,
-                color: Colors.white,
+              Everone_Watch_Icon(
+                icon: Icons.done,
               ),
-              Icon(
-                Icons.done,
-                color: Colors.white,
+              Everone_Watch_Icon(
+                icon: Icons.play_arrow,
               ),
-              Icon(
-                Icons.play_arrow,
-                color: Colors.white,
-              )
             ],
           ),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 10, top: 15),
-          child: Text(
-            everyonewatch[index]['title'],
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-              fontSize: 24,
-            ),
+          child: Text_Tabsview_Detail(
+            everyonewatch: everyonewatch,
+            index: index,
+            colors: Colors.white,
+            name: _ite,
+            size: 24,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 10, top: 5, right: 5, bottom: 5),
-          child: Text(
-            everyonewatch[index]['description'],
-            style: const TextStyle(
-                color: Colors.grey, fontWeight: FontWeight.w700),
-          ),
-        ),
+            padding:
+                const EdgeInsets.only(left: 10, top: 5, right: 5, bottom: 5),
+            child: Text_Tabsview_Detail(
+              index: index,
+              everyonewatch: everyonewatch,
+              colors: Colors.grey,
+              name: "description",
+              size: 18,
+            )),
         Padding(
-          padding: const EdgeInsets.only(left: 10, top: 5, right: 5),
-          child: Text(
-            everyonewatch[index]['type'],
-            style: const TextStyle(
-                color: Colors.white, fontWeight: FontWeight.w700),
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        )
+            padding: const EdgeInsets.only(left: 10, top: 5, right: 5),
+            child: Text_Tabsview_Detail(
+              everyonewatch: everyonewatch,
+              index: index,
+              name: "type",
+              colors: Colors.white,
+              size: 18,
+            )),
+        _height15()
       ],
+    );
+  }
+
+  Padding _everone_watch_titleimg() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 10),
+      child: Image.asset(
+        everyonewatch[index]["title_img"],
+        width: 170,
+      ),
+    );
+  }
+
+  SizedBox _height15() {
+    return const SizedBox(
+      height: 15,
     );
   }
 }
